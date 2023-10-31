@@ -1,6 +1,29 @@
+--Exercicio 1.1
+SELECT * FROM crosstab(
+	'SELECT 
+	location,
+	month, AVG(raindays)::INT 
+	FROM rainfalls 
+	GROUP BY location, month
+	ORDER BY location, month;
+'
+) AS tab_ref_cruzada(
+	"location" TEXT, 
+	"Janeiro" INT, 
+	"Fevereiro" INT, 
+	"Março" INT, 
+	"Abril" INT, 
+	"Maio" INT, 
+	"Junho" INT,
+	"Julho" INT,
+	"Agosto" INT,
+	"Setembro" INT,
+	"Outubro" INT,
+	"Novembro" INT,
+	"Dezembro" INT
+);
 
-
-SELECT * FROM crosstab('SELECT location,year, SUM(raindays) FROM rainfalls GROUP BY location, year ORDER BY location,year;') AS tab_ref_cruzada("location" TEXT, "2012" BIGINT, "2013" BIGINT, "2014" BIGINT, "2015" BIGINT, "2016" BIGINT, "2017" BIGINT);
+--SELECT * FROM crosstab('SELECT location,year, SUM(raindays) FROM rainfalls GROUP BY location, year ORDER BY location,year;') AS tab_ref_cruzada("location" TEXT, "2012" BIGINT, "2013" BIGINT, "2014" BIGINT, "2015" BIGINT, "2016" BIGINT, "2017" BIGINT);
 
 -- SELECT * FROM crosstab(
 -- 	'
